@@ -19,13 +19,15 @@ def main():
     td_list = training_data_file.readlines()
     training_data_file.close()
 
-    for record in td_list:
-        entries = record.split(",")
-        inputs = (numpy.asarray(entries[1:], dtype=float) / 255 * 0.99) + 0.01
-        label = entries[0]
-        targets = np.zeros(output_nodes) + 0.01
-        targets[int(label)] = 0.99
-        n.train(inputs_list=inputs, targets_list=targets)
+    epochs = 5
+    for e in range(epochs):
+        for record in td_list:
+            entries = record.split(",")
+            inputs = (numpy.asarray(entries[1:], dtype=float) / 255 * 0.99) + 0.01
+            label = entries[0]
+            targets = np.zeros(output_nodes) + 0.01
+            targets[int(label)] = 0.99
+            n.train(inputs_list=inputs, targets_list=targets)
 
     test_file = open("mnist_dataset/mnist_test.csv", "r")
     tf_list = test_file.readlines()
