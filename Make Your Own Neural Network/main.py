@@ -8,14 +8,14 @@ import numpy
 
 def main():
     input_nodes = 784
-    hidden_nodes = 100
+    hidden_nodes = 200
     output_nodes = 10
 
-    learning_rate = 0.3
+    learning_rate = 0.2
 
     n = NeuralNetwork(input_nodes, hidden_nodes, output_nodes, learning_rate)
 
-    training_data_file = open("mnist_dataset/mnist_train_100.csv", "r")
+    training_data_file = open("mnist_dataset/mnist_train.csv", "r")
     td_list = training_data_file.readlines()
     training_data_file.close()
 
@@ -27,7 +27,7 @@ def main():
         targets[int(label)] = 0.99
         n.train(inputs_list=inputs, targets_list=targets)
 
-    test_file = open("mnist_dataset/mnist_test_10.csv", "r")
+    test_file = open("mnist_dataset/mnist_test.csv", "r")
     tf_list = test_file.readlines()
     test_file.close()
 
