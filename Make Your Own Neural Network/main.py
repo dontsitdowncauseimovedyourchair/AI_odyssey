@@ -31,13 +31,25 @@ def main():
     tf_list = test_file.readlines()
     test_file.close()
 
-    entry = tf_list[0]
-    data = entry.split(",")
-    img_data = numpy.asarray(data[1:], float).reshape((28, 28))
-    pyplot.imshow(img_data, cmap="Greys", interpolation='None')
-    plt.show() #7
+    scoreboard = []
 
-    print(n.query((numpy.asarray(data[1:], dtype=float) / 255 * 0.99) + 0.01))
+    for record in tf_list:
+        data = record.split(",")
+        correct = int(data[0])
+        print(correct, "correct answer")
+        inputs = (numpy.asarray(data[1:], dtype=float) / 255 * 0.99) + 0.01
+        outputs = n.query(inputs)
+        label = numpy.argmax(outputs)
+        print(label, "network's answer")
+        if label == correct:
+            scoreboard.append(1)
+        else:
+            scoreboard.append(0)
+
+    print(scoreboard)
+
+    sb_arr = numpy.asarray(scoreboard)
+    print("Performance: " + (sb_arr.sum() / sb_arr.size * 100).__str__() + "%")
 
 if __name__ == '__main__':
     main()
