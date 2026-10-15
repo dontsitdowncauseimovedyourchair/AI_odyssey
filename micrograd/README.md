@@ -1,0 +1,1 @@
+My own implementation of micrograd taken from Karpathy's video. It's kinda the same code but done by me from my understanding and memory.
