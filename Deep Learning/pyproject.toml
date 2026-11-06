@@ -1,0 +1,12 @@
+[project]
+name = "deep-learning"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "ipykernel>=7.4.0",
+    "keras>=3.15.1",
+    "matplotlib>=3.11.2",
+    "tensorflow>=2.21.0",
+]
