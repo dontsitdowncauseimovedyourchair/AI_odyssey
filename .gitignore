@@ -194,3 +194,5 @@ cython_debug/
 
 .idea/**/gradle.xml
 .idea/**/libraries
+
+mnist_dataset
